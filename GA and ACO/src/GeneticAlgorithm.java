@@ -1,15 +1,8 @@
-
 import java.util.Random;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author YovanJong
+ * @author Yovan, Henrico, Jodi
+ * @reference http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5
  */
 public class GeneticAlgorithm {
     private static final double mutationRate = 0.015;

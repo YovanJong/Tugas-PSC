@@ -1,6 +1,7 @@
 /**
  *
- * @author YovanJong
+ * @author Yovan, Henrico, Jodi
+ * @reference http://www.theprojectspot.com/tutorial-post/applying-a-genetic-algorithm-to-the-travelling-salesman-problem/5
  */
 public class Kota {
     int x;
