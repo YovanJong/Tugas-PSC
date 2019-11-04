@@ -1,3 +1,6 @@
+
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,6 +15,8 @@ public class GeneticAlgorithm {
     private static final double mutationRate = 0.015;
     private static final int tournamentSize = 5;
     private static final boolean elitism = true;
+    private static Random r = new Random();
+    private static int batas = r.nextInt(101);
     
     public static Population evolvePopulation(Population pop){
         Population newPopulation = new Population(pop.populationSize(),false);
@@ -38,28 +43,16 @@ public class GeneticAlgorithm {
     
     public static Tour crossover(Tour parent1,Tour parent2){
         Tour child = new Tour();
-        int startPos = (int) (Math.random()*parent1.tourSize());
-        int endPos = (int)(Math.random()*parent1.tourSize());
-        
-        for(int i=0;i<child.tourSize();i++){
-            if(startPos<endPos && i>startPos && i<endPos){
-                child.setKota(i, parent1.getCity(i));
-            }
-            else if(startPos>endPos){
-                if(!(i<startPos && i>endPos)){
-                    child.setKota(i,parent1.getCity(i));
-                }
-            }
+        int idx = 0;
+        for(int i = 0 ; i < batas ; i++){
+            child.setKota(i, parent1.getCity(i));
+            idx++;
         }
         
-        for(int i=0;i<parent2.tourSize();i++){
+        for(int i = 0 ; i < parent2.tourSize(); i++){
             if(!child.containsCity(parent2.getCity(i))){
-                for(int j=0;j<child.tourSize();j++){
-                    if(child.getCity(j)==null){
-                        child.setKota(j, parent2.getCity(i));
-                        break;
-                    }
-                }
+                child.setKota(idx, parent2.getCity(i));
+                idx++;
             }
         }
         

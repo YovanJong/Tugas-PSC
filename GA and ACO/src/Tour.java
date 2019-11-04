@@ -1,4 +1,4 @@
-/**
+    /**
  *
  * @author YovanJong
  */
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Tour {
-    private ArrayList tour = new ArrayList<Kota>();
+    private ArrayList<Kota> tour = new ArrayList<Kota>();
     private double fitness = 0;
     private int distance = 0;
     

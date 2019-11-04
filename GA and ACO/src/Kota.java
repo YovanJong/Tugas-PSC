@@ -5,13 +5,10 @@
 public class Kota {
     int x;
     int y;
+    int kota;
     
-    public Kota(){
-        this.x = (int) (Math.random()*200);
-        this.y = (int) (Math.random()*200);
-    }
-    
-    public Kota(int x, int y){
+    public Kota(int kota, int x, int y){
+        this.kota = kota;
         this.x = x;
         this.y = y;
     }
@@ -32,8 +29,11 @@ public class Kota {
         return this.y;
     }
     
+    public int getKota(){
+        return this.kota;
+    }
     @Override
     public String toString(){
-        return getX()+","+getY();
+        return "Kota " + getKota() + " Koordinat " +getX()+","+getY();
     }
 }
