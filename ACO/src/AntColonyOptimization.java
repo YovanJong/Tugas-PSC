@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /*
@@ -31,7 +32,7 @@ public class AntColonyOptimization {
     private Random random;
     private double probabilities[];
 
-    private int currentIndex;
+    private int curIdx;
 
     private int[] bestTourOrder;
     private double bestTourLength;
@@ -44,6 +45,7 @@ public class AntColonyOptimization {
         this.trails = new ArrayList<City>();
         this.ants = new ArrayList<Ant>();
         this.random = new Random();
+        this.curIdx = 0;
         for(int i=0;i<nAnts;i++){
             ants.add(new Ant(nCities));
         }
@@ -54,7 +56,48 @@ public class AntColonyOptimization {
         this.graph.add(city);
     }
     
+    public void startAntOptimization() {
+        for(int i =0;i<3;i++){
+            System.out.println("Attempt #" + i);
+//            solve();
+        }
+    }
     
+//    public int[] solve() {
+//        setupAnts();
+//        clearTrails();
+//        IntStream.range(0, maxIterations)
+//            .forEach(i -> {
+//                moveAnts();
+//                updateTrails();
+//                updateBest();
+//            });
+//        System.out.println("Best tour length: " + (bestTourLength - nCities));
+//        System.out.println("Best tour order: " + Arrays.toString(bestTourOrder));
+//        return bestTourOrder.clone();
+//    }
     
+    private void setupAnts() {
+        for(int i =0;i<nAnts;i++){
+            ants.get(i).clear();
+            ants.get(i).visitCity(-1, random.nextInt(nCities));
+        } 
+    }
+    
+    private void moveAnts() {
+        for(int i = 1;i<nCities;i++){
+            for(int j=1;j<nAnts;j++){
+                ants.get(i).visitCity(curIdx, selectNextCity(ants.get(i)) );
+            }
+            curIdx++;
+        }
+    }
+    
+    private int selectNextCity(Ant ant){
+        return 0;
+    }
 
+   
+
+ 
 }
