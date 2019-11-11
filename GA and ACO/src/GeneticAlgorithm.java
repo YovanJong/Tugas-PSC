@@ -9,9 +9,9 @@ public class GeneticAlgorithm {
     private static final int tournamentSize = 5;
     private static final boolean elitism = true;
     private static Random r = new Random();
-    private static int batas = r.nextInt(101);
+    private static int batas ;
     
-    public static Population evolvePopulation(Population pop){
+    public static Population evolvePopulation(Population pop, int batas){
         Population newPopulation = new Population(pop.populationSize(),false);
         
         int elitismOffset = 0;
@@ -23,7 +23,7 @@ public class GeneticAlgorithm {
         for(int i=elitismOffset;i<newPopulation.populationSize();i++){
             Tour parent1 = tournamentSelection(pop);
             Tour parent2 = tournamentSelection(pop);
-            Tour child = crossover(parent1,parent2);
+            Tour child = crossover(parent1,parent2, batas);
             newPopulation.saveTour(i,child);
         }
         
@@ -34,7 +34,8 @@ public class GeneticAlgorithm {
         return newPopulation;
     }
     
-    public static Tour crossover(Tour parent1,Tour parent2){
+    public static Tour crossover(Tour parent1,Tour parent2, int batas){
+        GeneticAlgorithm.batas = r.nextInt(batas);
         Tour child = new Tour();
         int idx = 0;
         for(int i = 0 ; i < batas ; i++){
