@@ -11,8 +11,10 @@
 public class City {
     private int posX;
     private int posY;
+    private int city;
     
-    public City(int posX, int posY){
+    public City(int city, int posX, int posY){
+        this.city = city;
         this.posX = posX;
         this.posY = posY;
     }
