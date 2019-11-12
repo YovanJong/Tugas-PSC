@@ -1,19 +1,13 @@
-
 import java.util.ArrayList;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author henrico
+ * @author Henrico, Yovan, Jodi
+ * @reference https://www.baeldung.com/java-ant-colony-optimization
+ * @reference https://github.com/eugenp/tutorials/tree/master/algorithms-genetic
  */
 public class Ant {
     protected int pathSize;
-    protected int[] path;
+    public int[] path;
     protected boolean[] visited;
     
     public Ant(int pathSize){
@@ -31,20 +25,19 @@ public class Ant {
         return this.visited[idx];
     }
     
-    public double totalDistance(ArrayList<City> city){
-        double distance = 0;
-        int i;
-        for(i=1;i<pathSize;i++){
-            distance+= calcDistance(city.get(path[i]), city.get(path[i-1]));
+    public double totalDistance(double[][] edges){
+       double length = edges[pathSize - 1][path[0]];
+        for (int i = 0; i < this.pathSize - 1; i++) {
+            length += edges[path[i]] [path[i + 1]];
         }
-        return distance;
+        return length;
     }
     
-    public double calcDistance(City a, City b){
-        int x = Math.abs(a.getPosX() - b.getPosX());
-        int y = Math.abs(a.getPosY()- b.getPosY());
-        return Math.sqrt((x*x) + (y*y));
-    }
+//    public double calcDistance(City a, City b){
+//        int x = Math.abs(a.getPosX() - b.getPosX());
+//        int y = Math.abs(a.getPosY()- b.getPosY());
+//        return Math.sqrt((x*x) + (y*y));
+//    }
     
     public void clear(){
         for(int i =0;i<pathSize;i++){

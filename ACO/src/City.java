@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
- * @author henrico
+ * @author Henrico, Yovan, Jodi
+ * @reference https://www.baeldung.com/java-ant-colony-optimization
+ * @reference https://github.com/eugenp/tutorials/tree/master/algorithms-genetic
  */
 public class City {
     private int posX;
@@ -16,7 +12,7 @@ public class City {
     public City(int city, int posX, int posY){
         this.city = city;
         this.posX = posX;
-        this.posY = posY;
+        this.posY = posY;   
     }
     
     public int getPosX(){
